@@ -1,9 +1,13 @@
 const data = {
   name: "MIDI",
   children: [
-    { name: "Classical", value: 100 },
-    { name: "Games", value: 200 },
-    { name: "Jazz", value: 50 }
+    {
+      name: "Game OST",
+      children: [
+        { name: "Zelda.mid", value: 1200 },
+        { name: "Mario.mid", value: 900 }
+      ]
+    }
   ]
 };
 
@@ -31,3 +35,8 @@ svg.selectAll("rect")
   .attr("width", d => d.x1 - d.x0)
   .attr("height", d => d.y1 - d.y0)
   .attr("fill", "steelblue");
+
+svg.selectAll("rect")
+  .on("click", (event, d) => {
+    window.open("midis/" + d.data.name);
+  });
